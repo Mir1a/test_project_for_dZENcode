@@ -58,7 +58,6 @@ pip install -r requirements.txt
 
     Swagger UI: http://127.0.0.1:8000/swagger/
 
-
     API Эндпоинты
 
     Без авторизации:
