@@ -19,8 +19,8 @@ pip install -r requirements.txt
 
 1. Клонируйте репозиторий:
 
-   ```bash
-   git clone
+   git clone git@github.com:Mir1a/test_project_for_dZENcode.git
+   cd test_project_for_dZENcode
    cd src
 
 2. Создайте виртуальное окружение и активируйте его:
@@ -44,13 +44,38 @@ pip install -r requirements.txt
 
     Swagger UI: http://127.0.0.1:8000/swagger/
 
+Установка с использованием docker:
 
-    API Эндпоинты:
+1. Клонируйте репозиторий:
+
+   git clone git@github.com:Mir1a/test_project_for_dZENcode.git
+   cd test_project_for_dZENcode
+   cd src
+
+2. Запустите docker-compose
+
+    docker-compose up --build
+
+3. Доступ к приложению:
+
+    Swagger UI: http://127.0.0.1:8000/swagger/
+
+
+    API Эндпоинты
+
+    Без авторизации:
+
+GET /user/ - Получить список всех пользователей.
+POST /user/ - Создать нового пользователя.
+POST /token/ - Получение JWT токена.
+POST /token/refresh/ - Обновление access токена через refresh токен.
+
+Защищенные эндпоинты (требуется авторизация):
+Для доступа к этим эндпоинтам необходимо использовать Bearer токен.
+Токен передается в заголовке авторизации:
+
+Authorization: Bearer <токен>
 
 GET /comments/ - Получить список всех комментариев.
 POST /comments/ - Создать новый комментарий.
-GET /user/ - Получить список всех пользователя.
-POST /user/ - Создать нового пользователя.
 
-POST /token/ - Получение jwt токена
-POST /token/refresh/ - Обновление access токена через refresh токен
