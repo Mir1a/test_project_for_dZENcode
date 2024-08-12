@@ -7,7 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   REGISTRY_OWNER: Mir1a
-  IMAGE_NAME: test_project_for_dZENcode
+  IMAGE_NAME: test_project_for_dzencode
 
 permissions:
   contents: read
