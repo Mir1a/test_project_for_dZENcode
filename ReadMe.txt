@@ -21,7 +21,6 @@ pip install -r requirements.txt
 
    git clone git@github.com:Mir1a/test_project_for_dZENcode.git
    cd test_project_for_dZENcode
-   cd src
 
 2. Создайте виртуальное окружение и активируйте его:
 
@@ -50,7 +49,6 @@ pip install -r requirements.txt
 
    git clone git@github.com:Mir1a/test_project_for_dZENcode.git
    cd test_project_for_dZENcode
-   cd src
 
 2. Запустите docker-compose
 
