@@ -1,4 +1,4 @@
-FROM python:3.10-slim as builder
+FROM python:3.10 AS builder
 
 WORKDIR /usr/src/app
 
@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
         && apt-get install gettext -y
 
 COPY ./requirements.txt .
+
+RUN pip install --upgrade pip
 
 RUN pip install --upgrade pip wheel setuptools && \
     pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
