@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: angro-postgres
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - back_network
+
+  back:
+    image: ghcr.io/Mir1a/test_project_for_dZENcode:latest
+    container_name: angro-back
+    working_dir: /usr/src/app
+    command: gunicorn --bind 0.0.0.0:5000 -w 8 src.wsgi
+    volumes:
+      - back-static:/usr/src/app/allstaticfiles
+      - back-media:/usr/src/app/media
+    environment:
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - ENGINE=django.db.backends.postgresql_psycopg2
+      - DJANGO_SETTINGS_MODULE=src.settings.prod
+      - FRONTEND_DOMAIN=${FRONTEND_DOMAIN}
+      - BACKEND_DOMAIN=${BACKEND_DOMAIN}
+    depends_on:
+      - db
+    networks:
+      - nginx_network
+      - back_network
+
+  nginx-proxy:
+    image: ghcr.io/Mir1a/test_project_for_dZENcode:latest
+    container_name: test-nginx-proxy
+    volumes:
+      - /etc/nginx/sites-available:/etc/nginx/sites-available:ro
+      - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled:rw
+      - back-static:/app/allstaticfiles
+      - back-media:/app/media
+    ports:
+      - 80:80
+    environment:
+      - ENVSUBST_VARS=BACKEND_DOMAIN
+      - BACKEND_DOMAIN
+    networks:
+      - nginx_network
+    env_file:
+      - ./.env
+
+
+volumes:
+  postgres_data:
+  back-static:
+  back-media:
+  nginx_secrets:
+
+networks:
+  nginx_network:
+  back_network:
