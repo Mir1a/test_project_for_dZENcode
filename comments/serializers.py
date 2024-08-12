@@ -1,5 +1,3 @@
-from lxml import etree
-from lxml.etree import HTMLParser
 import bleach
 from rest_framework import serializers
 
@@ -10,10 +8,12 @@ ALLOWED_ATTRIBUTES = {
     'a': ['href', 'title'],
 }
 
+
 class RelatedCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+
 
 class CommentSerializer(serializers.ModelSerializer):
     related_comments = RelatedCommentSerializer(many=True, read_only=True, source='replies')
