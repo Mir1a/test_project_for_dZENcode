@@ -5,16 +5,13 @@ WORKDIR /usr/src/app/
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN pip install --upgrade pip wheel
-
-COPY ./requirements.txt .
-
-RUN apt-get update && apt-get install -y libwebp-dev g++ gcc gettext
-RUN apt install gettext -y
-RUN pip install -r requirements.txt --no-cache-dir
+RUN apt-get update && apt-get install -y libwebp-dev g++ gcc gettext && \
+    pip install --upgrade pip wheel && \
+    pip install --no-cache-dir -r requirements.txt
 
 COPY ./entrypoint.sh .
-
 COPY . .
+
+RUN chmod +x /usr/src/app/entrypoint.sh
 
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
