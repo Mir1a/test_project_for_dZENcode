@@ -5,9 +5,13 @@ WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -y \
         libwebp-dev g++ gcc gettext libzbar0 \
         curl libxrender1 libjpeg62-turbo fontconfig \
-        libxtst6 xfonts-75dpi xfonts-base xz-utils && \
-        pip install --upgrade pip wheel setuptools && \
-        pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+        libxtst6 xfonts-75dpi xfonts-base xz-utils git \
+        && apt-get install gettext -y
+
+COPY ./requirements.txt .
+
+RUN pip install --upgrade pip wheel setuptools && \
+    pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
 FROM python:3.8.15-slim
 
@@ -23,11 +27,13 @@ RUN apt-get update && apt-get install -y \
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 
-RUN pip install --no-cache-dir /wheels/*
+RUN pip install --no-cache /wheels/*
 
 COPY ./entrypoint.prod.sh /usr/src/app/entrypoint.prod.sh
 RUN chmod +x /usr/src/app/entrypoint.prod.sh
 
 COPY . /usr/src/app
+
+RUN chmod +x /usr/src/app/entrypoint.prod.sh
 
 ENTRYPOINT ["/usr/src/app/entrypoint.prod.sh"]
