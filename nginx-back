@@ -1,19 +1,8 @@
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
+    listen 80;
+    listen [::]:80;
 
     server_name angro-popeye-backend.online www.angro-popeye-backend.online;
-
-    #ssl_certificate     /etc/letsencrypt/live/angro-popeye-backend.online/fullchain.pem;
-    #ssl_certificate_key /etc/letsencrypt/live/angro-popeye-backend.online/privkey.pem;
-    #ssl_trusted_certificate /etc/letsencrypt/live/angro-popeye-backend.online/chain.pem;
-
-    #ssl_dhparam /etc/letsencrypt/dhparams/dhparam.pem;
-
-    #location ^~ /.well-known/acme-challenge {
-    #    default_type text/plain;
-    #    root /var/www/letsencrypt;
-    #}
 
     location /static/ {
         alias /app/allstaticfiles/;
@@ -41,14 +30,5 @@ server {
         proxy_set_header X-Forwarded-For        $proxy_add_x_forwarded_for;
         proxy_set_header Host                   $host;
         proxy_set_header X-Real-IP              $remote_addr;
-    }
-}
-
-server {
-    listen 80;
-    server_name angro-popeye-backend.online www.angro-popeye-backend.online;
-
-    location / {
-        return 301 https://$host$request_uri;
     }
 }
