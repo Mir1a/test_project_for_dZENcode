@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 
 # region				-----Internal Imports-----
 from .django import *
-from .project import *
 from .third_party import *
 # endregion
 
