@@ -75,4 +75,3 @@ Authorization: Bearer <токен>
 
 GET /comments/ - Получить список всех комментариев.
 POST /comments/ - Создать новый комментарий.
-
