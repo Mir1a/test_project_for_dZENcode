@@ -2,7 +2,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name angro-popeye-backend.online www.angro-popeye-backend.online;
+    server_name 185.174.101.137;
 
     location /static/ {
         alias /app/allstaticfiles/;
