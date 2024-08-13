@@ -38,7 +38,7 @@ services:
       - back_network
 
   nginx-proxy:
-    image: ghcr.io/mir1a/test_project_for_dzencode:latest
+    image: nginx:latest
     container_name: test-nginx-proxy
     volumes:
       - /etc/nginx/sites-available:/etc/nginx/sites-available:ro
