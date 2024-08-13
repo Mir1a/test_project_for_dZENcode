@@ -26,9 +26,6 @@ DATABASES = {
     }
 }
 
-
-MIDDLEWARE = MIDDLEWARE + ['utils.first_party.middleware.Process500Error']
-
 # CORS
 INSTALLED_APPS += ['corsheaders']
 
