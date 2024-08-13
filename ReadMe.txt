@@ -35,11 +35,20 @@ pip install -r requirements.txt
 
     python manage.py migrate
 
-5. Запустите сервер разработки:
+5. Создайте .env файл с вашими переменными среды:
+
+DB_HOST
+DB_PORT
+DB_NAME
+DB_USER
+DB_PASS
+ENGINE
+
+6. Запустите сервер разработки:
 
     python manage.py runserver
 
-6. Доступ к приложению:
+7. Доступ к приложению:
 
     Swagger UI: http://127.0.0.1:8000/swagger/
 
@@ -50,11 +59,20 @@ pip install -r requirements.txt
    git clone git@github.com:Mir1a/test_project_for_dZENcode.git
    cd test_project_for_dZENcode
 
-2. Запустите docker-compose
+2. Создайте .env файл с вашими переменными среды:
+
+DB_HOST
+DB_PORT
+DB_NAME
+DB_USER
+DB_PASS
+ENGINE
+
+3. Запустите docker-compose
 
     docker-compose up --build
 
-3. Доступ к приложению:
+4. Доступ к приложению:
 
     Swagger UI: http://127.0.0.1:8000/swagger/
 

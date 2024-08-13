@@ -54,7 +54,7 @@ services:
     networks:
       - nginx_network
     env_file:
-      - ./.env
+      - .env
     depends_on:
       - back
 
