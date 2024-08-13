@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-f3b^5-n1zgj1z&(6vl=uykrs6kppw1k)xov8)y^**!d0a-zp!l
 DEBUG = False
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')\
-                + ["angro-popeye-backend.online", "angro-popeye.online"]
+                + ["185.174.101.137"]
 
 DATABASES = {
     'default': {
@@ -38,10 +38,8 @@ MIDDLEWARE.insert(
 )
 
 CORS_ALLOWED_ORIGINS = [
-    f'http://angro-popeye-backend.online',
-    f'https://angro-popeye-backend.online',
-    f'http://angro-popeye.online',
-    f'https://angro-popeye.online',
+    'http://185.174.101.137',
+    'https://185.174.101.137',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:5173',
     'http://127.0.0.1',
@@ -51,8 +49,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    f'http://angro-popeye-backend.online',
-    f'https://angro-popeye-backend.online',
+    'http://185.174.101.137',
+    'https://185.174.101.137',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:5173',
     'http://127.0.0.1',
@@ -61,8 +59,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost'
 ]
 
-CSRF_COOKIE_DOMAIN = 'angro-popeye-backend.online'
+CSRF_COOKIE_DOMAIN = '185.174.101.137'
 # 500 middleware
-
 
 print(">>> START PROJECT WITH PROD SETTINGS <<<")
