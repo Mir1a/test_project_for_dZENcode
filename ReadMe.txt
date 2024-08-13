@@ -27,15 +27,7 @@ pip install -r requirements.txt
     python -m venv .venv
     .venv\Scripts\activate
 
-3. Установите зависимости:
-
-    pip install -r requirements.txt
-
-4. Примените миграции:
-
-    python manage.py migrate
-
-5. Создайте .env файл с вашими переменными среды:
+3. Создайте .env файл с вашими переменными среды:
 
 DB_HOST
 DB_PORT
@@ -43,6 +35,15 @@ DB_NAME
 DB_USER
 DB_PASS
 ENGINE
+
+4. Установите зависимости:
+
+    pip install -r requirements.txt
+
+
+5. Примените миграции:
+
+    python manage.py migrate
 
 6. Запустите сервер разработки:
 

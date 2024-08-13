@@ -19,7 +19,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').s
 DATABASES = {
     'default': {
         'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': 'test-database',
+        'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
         'PORT': os.environ.get('DB_PORT'),
         'USER': os.environ.get('DB_USER'),
@@ -30,5 +30,6 @@ DATABASES = {
         },
     }
 }
+
 
 print(">>> START PROJECT WITH LOCAL SETTINGS <<<")
