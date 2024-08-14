@@ -16,8 +16,8 @@ services:
       - "5432:5432"
 
   back:
-    image: angro-backend
-    container_name: angro-back
+    image: dzencode-backend
+    container_name: dzencode-backend
     working_dir: /usr/src/app/
     build:
       context: .
