@@ -31,20 +31,12 @@ pip install -r requirements.txt
 
 Пример:
 
-#переменные для docker-compose
 DB_HOST=db
 DB_PORT=5432
 DB_NAME=postgres
 DB_USER=postgres
 DB_PASS=postgres
-ENGINE=django.db.backends.postgresql
 
-#переменные для python manage.py runserver
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_NAME=postgres
-DATABASE_USER=postgres
-DATABASE_PASS=postgres
 
 4. Установите зависимости:
 
@@ -74,20 +66,12 @@ DATABASE_PASS=postgres
 
 Пример:
 
-#переменные для docker-compose
 DB_HOST=db
 DB_PORT=5432
 DB_NAME=postgres
 DB_USER=postgres
 DB_PASS=postgres
-ENGINE=django.db.backends.postgresql
 
-#переменные для python manage.py runserver
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_NAME=postgres
-DATABASE_USER=postgres
-DATABASE_PASS=postgres
 
 3. Запустите docker-compose
 

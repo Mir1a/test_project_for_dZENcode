@@ -1,6 +1,7 @@
 # region				-----External Imports-----
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 # endregion
 
 # region				-----Internal Imports-----
@@ -16,31 +17,34 @@ DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
 
-IS_DOCKER = os.getenv('IS_DOCKER', 'false').lower() == 'true'
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-if IS_DOCKER:
-    DATABASES = {
-        'default': {
+
+def get_database_settings():
+    running_in_container = os.getenv('RUNNING_IN_CONTAINER', 'false') == 'true'
+
+    if running_in_container:
+        return {
             'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASS'),
             'HOST': os.getenv('DB_HOST'),
             'PORT': os.getenv('DB_PORT'),
+        }
+    else:
+        return {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': 'localhost',
+            'PORT': '5432',
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USER'),
             'PASSWORD': os.getenv('DB_PASS'),
         }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'HOST': 'localhost',
-            'PORT': '5432',
-            'NAME': os.getenv('DATABASE_NAME', 'postgres'),
-            'USER': os.getenv('DATABASE_USER', 'postgres'),
-            'PASSWORD': os.getenv('DATABASE_PASS', 'postgres'),
-        }
-    }
 
 
+DATABASES = {
+    'default': get_database_settings()
+}
 
 print(">>> START PROJECT WITH LOCAL SETTINGS <<<")
