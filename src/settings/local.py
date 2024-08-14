@@ -18,11 +18,11 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').s
 
 DATABASES = {
     'default': {
-        'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'PORT': os.environ.get('DB_PORT'),
-        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASS'),
+        'HOST': os.environ.get('DATABASE_HOST'),
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'PORT': os.environ.get('DATABASE_PORT'),
+        'USER': os.environ.get('DATABASE_USER'),
         'ENGINE': 'django.db.backends.postgresql',
         'ATOMIC_REQUESTS': True,
         'TEST': {
@@ -30,6 +30,7 @@ DATABASES = {
         },
     }
 }
+
 
 
 print(">>> START PROJECT WITH LOCAL SETTINGS <<<")
