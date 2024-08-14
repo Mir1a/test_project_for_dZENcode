@@ -42,29 +42,15 @@ DB_PASS=postgres
 
     pip install -r requirements.txt
 
-5. Измените файл local.py:
-
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'HOST': 'localhost',
-            'PORT': '5432',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASS'),
-        }
-    }
-
-
-6. Примените миграции:
+5. Примените миграции:
 
     python manage.py migrate
 
-7. Запустите сервер разработки:
+6. Запустите сервер разработки:
 
     python manage.py runserver
 
-8. Доступ к приложению:
+7. Доступ к приложению:
 
     Swagger UI: http://127.0.0.1:8000/swagger/
 
@@ -85,23 +71,11 @@ DB_NAME=postgres
 DB_USER=postgres
 DB_PASS=postgres
 
-3. Измените файл local.py:
-
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT'),
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASS'),
-        }
-    }
-4. Запустите docker-compose
+3. Запустите docker-compose
 
     docker-compose up --build
 
-5. Доступ к приложению:
+4. Доступ к приложению:
 
     Swagger UI: http://127.0.0.1:8000/swagger/
 
